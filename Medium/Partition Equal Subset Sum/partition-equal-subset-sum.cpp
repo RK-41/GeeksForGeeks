@@ -32,7 +32,7 @@ public:
         dp[0] = 1;
         
         // Step 4: DP Loop
-        // Iterating through the array. For each array, traversing 'dp' inreverse
+        // Iterating through the array. For each array, traversing 'dp' in reverse
         // order from 'totalSum/2' down to 'arr[i-1]'.
         // 'dp[j]' is updated if it's possible to achieve a sum of 'j' using
         // the current element 'arr[i-1]'.
