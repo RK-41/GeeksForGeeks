@@ -32,7 +32,7 @@ public:
         dp[0] = 1;
         
         // Step 4: DP Loop
-        // Iterating through the array. For each array, traversing 'dp' in reverse
+        // Iterating through the array. For each array element, traversing 'dp' in reverse
         // order from 'totalSum/2' down to 'arr[i-1]'.
         // 'dp[j]' is updated if it's possible to achieve a sum of 'j' using
         // the current element 'arr[i-1]'.
@@ -41,20 +41,17 @@ public:
             for(int j=totalSum/2; j>=arr[i-1]; j--){
                 
                 // if arr[i-1] <= j, it can either be considered or skipped
-                if(arr[i-1] <= j){
                     
-                    // dp[j] is updated to true if either:
-                    //  1. dp[j] is already true
-                    //  2. sum 'j-arr[i-1]' can be formed with previous elements
-                    dp[j] = dp[j] || dp[j - arr[i-1]];
-                }
+                // dp[j] is updated to true if either:
+                //  1. dp[j] is already true
+                //  2. sum 'j-arr[i-1]' can be formed with previous elements
+                dp[j] = dp[j] || dp[j - arr[i-1]];
             }
         }
         
         // Step 5: Returning the result
         // If dp[totalSum/2] is true, it means that the array can be partitioned into 
-        // two equal sums.
-        // Otherwise, it's not possible.
+        // two equal sums. Otherwise, it's not possible.
         return dp[totalSum/2];
         
     }
