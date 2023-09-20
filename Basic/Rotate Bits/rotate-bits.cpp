@@ -9,7 +9,7 @@ class Solution
         vector <int> rotate (int n, int d)
         {
             //code here.
-            // 20.09.23 POTD
+            // 20.09.23 potd
             
             int nn=n;
             d%=16;
