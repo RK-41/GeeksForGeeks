@@ -11,6 +11,8 @@ class Solution {
   public:
     int isPossible(int N, int arr[]) {
         // code here
+        // 20.10.23 POTD
+        
         long long digitSum = 0;
         
         for(int i=0; i<N; i++){
