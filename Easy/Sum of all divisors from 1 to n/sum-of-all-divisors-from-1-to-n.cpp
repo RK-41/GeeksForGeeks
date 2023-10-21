@@ -10,16 +10,16 @@ public:
     long long sumOfDivisors(int N)
     {
         // Write Your Code here
-        // Observation: Every integer i in the range 1 to N appears N/i times 
-        // in the ans(ie, factor-sum)
+        // 21.10.23 POTD
         
-        long long factorSum = 0;
+        long long ans = 0;
         
         for(int i=1; i<=N; i++){
-            factorSum += i * (N/i);
+            int quotient = N/i;
+            ans += quotient*i;
         }
         
-        return factorSum;
+        return ans;
     }
 };
 
