@@ -97,24 +97,35 @@ class Solution {
     // Function to return a list of integers denoting the node
     // values of both the BST in a sorted order.
     vector<int> merge(Node *root1, Node *root2) {
-        // Your code here
-        // 23.07.24 POTD
-        vector<int> ans;
+        // 30.09.24 POTD
+        vector<int> ans, v1, v2;
+        inorderTrav(root1, v1);
+        inorderTrav(root2, v2);
         
-        inorderTraversal(root1, ans);
-        inorderTraversal(root2, ans);
-        
-        sort(ans.begin(), ans.end());
+        int m=v1.size(), n=v2.size(), i=0, j=0;
+        while(i<m || j<n){
+            if(i<m && j<n){
+                if(v1[i] <= v2[j]){
+                    ans.push_back(v1[i++]);
+                } else {
+                    ans.push_back(v2[j++]);
+                }
+            } else if(i<m){
+                ans.push_back(v1[i++]);
+            } else {
+                ans.push_back(v2[j++]);
+            }
+        }
         
         return ans;
     }
     
-    void inorderTraversal(Node *nd, vector<int>& v){
+    void inorderTrav(Node *nd, vector<int>& v){
         if(!nd) return;
         
-        inorderTraversal(nd->left, v);
+        inorderTrav(nd->left, v);
         v.push_back(nd->data);
-        inorderTraversal(nd->right, v);
+        inorderTrav(nd->right, v);
     }
 };
 
