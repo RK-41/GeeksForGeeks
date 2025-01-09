@@ -4,7 +4,7 @@ class Solution:
     #Function to count the number of possible triangles.
     def countTriangles(self, arr):
         # code here
-        # 08.01.25 POTD
+        # 08.01.25 potd
         if len(arr) < 3:
             return 0
             
