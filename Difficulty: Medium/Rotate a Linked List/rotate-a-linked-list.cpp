@@ -36,41 +36,45 @@ struct Node {
 
 */
 
-
-class Solution
-{
-    public:
-    //Function to rotate a linked list.
-    Node* rotate(Node* head, int k)
-    {
-        // Your code here
-        // 10.08.24 (potd)
-        Node* h=head;
-        Node* first;
-        
-        while(--k){
-            h=h->next;
-        }
-        
-        if(h->next==NULL)
+class Solution {
+  public:
+    Node* rotate(Node* head, int k) {
+        // Your code here 
+        // 19.01.25 pOtD
+        if(!head || !head->next || k == 0)
             return head;
             
-        first=h->next; // new first node
-        h->next=NULL;   // h now points to new last node
+        Node* ans = NULL;
+        Node* h = head;
+        int n = 0;
         
-        h=first;
-        while(h->next){ // going to last node of the original list
-            h=h->next;
+        while(h){
+            h = h->next;
+            n++;
         }
         
-        h->next=head;   
-        // old last node now points to old first node
+        k = k%n;
+        if(k == 0)
+            return head;
+            
+        h = head;
         
-        return first;
+        while(--k){
+            h = h->next;
+        }
+        ans = h->next;
+        h->next = NULL;
+        
+        h = ans;
+        while(h->next){
+            h = h->next;
+        }
+        
+        h->next = head;
+        
+        return ans;
     }
 };
-    
-
 
 
 //{ Driver Code Starts.
@@ -110,6 +114,7 @@ int main() {
         Solution ob;
         head = ob.rotate(head, k);
         printList(head);
+        cout << "~\n";
     }
     return 1;
 }
