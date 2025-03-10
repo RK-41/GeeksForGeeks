@@ -1,14 +1,16 @@
 //{ Driver Code Starts
+// Initial Template for C++
 #include <bits/stdc++.h>
 using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution {
   public:
     int editDistance(string str1, string str2) {
         // Code here
-        // 02.08.24 potd
+        // 10.03.25 (potd)
         int n=str1.size(), m=str2.size();
         vector<vector<int>> dp(n+1, vector<int>(m+1,0));
         
@@ -32,16 +34,24 @@ class Solution {
     }
 };
 
+
+
 //{ Driver Code Starts.
+
 int main() {
+
     int T;
     cin >> T;
+    cin.ignore();
     while (T--) {
-        string s, t;
-        cin >> s >> t;
+        string s1;
+        getline(cin, s1);
+        string s2;
+        getline(cin, s2);
         Solution ob;
-        int ans = ob.editDistance(s, t);
+        int ans = ob.editDistance(s1, s2);
         cout << ans << "\n";
+        cout << "~" << endl;
     }
     return 0;
 }
