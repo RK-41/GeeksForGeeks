@@ -5,77 +5,28 @@ class Node:
         self.data = x
         self.next = None
 '''
+import heapq
 class Solution:
     def mergeKLists(self, arr):
         # code here
-        # 19.02.25 POTD
+        # 24.02.25 (POTD)
         ans = Node(0)
         data = []
         
-        for lst in arr:
-            while lst:
-                data.append(lst.data)
-                lst = lst.next
-                
-        data.sort()
+        # Storing data of all the sorted lists in a min heap
+        for slist in arr:
+            while slist:
+                heapq.heappush(data, slist.data)
+                slist = slist.next
+        
+        # Creating the sorted linked list
         ref = ans
-        for val in data:
-            ref.next = Node(val)
+        while data:
+            ref.next = Node(heapq.heappop(data))
             ref = ref.next
             
+        # Returning the merged sorted linked list
         ans = ans.next
         return ans
 
 
-#{ 
- # Driver Code Starts
-import heapq
-
-
-class Node:
-
-    def __init__(self, x):
-        self.data = x
-        self.next = None
-
-    # To compare nodes in the heap
-    def __lt__(self, other):
-        return self.data < other.data
-
-
-def printList(node):
-    while node:
-        print(node.data, end=" ")
-        node = node.next
-    print()
-
-
-def main():
-    t = int(input())
-    for _ in range(t):
-        n = int(input())
-        lists = []
-        for _ in range(n):
-            values = list(map(int, input().split()))
-            head = None
-            temp = None
-            for value in values:
-                newNode = Node(value)
-                if head is None:
-                    head = newNode
-                    temp = head
-                else:
-                    temp.next = newNode
-                    temp = temp.next
-            lists.append(head)
-
-        sol = Solution()
-        head = sol.mergeKLists(lists)
-        printList(head)
-        print("~")
-
-
-if __name__ == "__main__":
-    main()
-
-# } Driver Code Ends
