@@ -1,0 +1,14 @@
+class Solution {
+  public:
+    vector<string> binstr(int n) {
+        // code here
+        // 30.09.25 potd
+
+        vector<string> ans((1 << n), string(n, '0'));
+        for(int i = 0; i < (1 << n); i++) {
+            for(int j = 0; j < n; j++) 
+                if(i & (1 << j)) ans[i][(n - j - 1)] = '1';
+        }
+        return ans;
+    }
+};
