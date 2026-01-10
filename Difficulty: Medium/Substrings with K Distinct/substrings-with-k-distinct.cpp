@@ -1,27 +1,34 @@
 class Solution {
   public:
-    // 03.06.25 potd
-    int countSubstr(string& s, int k) {
-        int count = 0;
-    for (int i = 0; i < s.size(); i++)
-    {
-        vector<int> freq(26, 0);
-        int distinct = 0;
-        for (int j = i; j < s.size(); j++)
-        {
-            if (freq[s[j] - 'a'] == 0)
-            {
-                distinct++;
+    // 10.01.26 potd
+    int f(string &s,int k){
+        vector<int> c(26,0);
+        int i =0;
+        int j =0;
+        int cnt =0;
+        int ccnt =0;
+        int n =s.size();
+        while(j < n){
+            if(c[s[j]-'a']){
+                c[s[j]-'a']++;
+            }else{
+                c[s[j]-'a']++;
+                ccnt++;
             }
-            freq[s[j] - 'a']++;
-            if (distinct == k)
-            {
-                count++;
+            while(i <= j && ccnt == k){
+                c[s[i]-'a']--;
+                if(c[s[i]-'a'] == 0){
+                    ccnt--;
+                }
+                i++;
+                cnt+=(n-j);
             }
-            if (distinct > k)
-                break;
+            j++;
         }
+        return cnt;
     }
-    return count;
+    int countSubstr(string& s, int k) {
+        // code here
+        return f(s,k)-f(s,k+1);
     }
 };
