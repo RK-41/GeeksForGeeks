@@ -3,6 +3,7 @@ class Solution:
     def catchThieves(self, arr, k):
         #code  here
         # 21.06.25 potd
+        # 14.01.26 (potd)
         police = deque([i for i,person in enumerate(arr) if person=='P'])
         theives = deque([i for i,person in enumerate(arr) if person=='T'])
         count = 0
