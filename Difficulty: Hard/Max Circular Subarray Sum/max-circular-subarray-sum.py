@@ -1,6 +1,7 @@
 class Solution:
-    # 25.07.25 potd
     def maxCircularSum(self, arr):
+        # code here
+        # 02.02.26 (potd)
         n = len(arr)
         
         maxi = -1e9
@@ -20,6 +21,5 @@ class Solution:
         mx = ss - min_so_far
         if mx == 0:
             return maxi
-
 
         return max(mx, maxi)
