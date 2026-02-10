@@ -1,6 +1,6 @@
 class Solution {
     public int kokoEat(int[] arr, int k) {
-        // 13.06.25 potd        
+        // 10.02.26 (potd)
         int maxi=0;
         for(int i:arr) maxi=Math.max(i,maxi);
         
