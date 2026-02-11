@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minCost(vector<int>& heights, vector<int>& cost) {
-        // 16.06.25 potd
+        // 11.02.26 (potd)
         int n = heights.size();
         vector<pair<int, int>> towers(n);
         for (int i = 0; i < n; i++) {
